@@ -1,24 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>College Marketplace</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <div class="navbar">
-        <h1>College Marketplace</h1>
-        <div class="nav-links">
-            <span id="userInfo"></span>
-            <a href="/login" id="loginLink">Login</a>
-            <a href="/logout" id="logoutLink" style="display:none;">Logout</a>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <h1>🏪 College Marketplace</h1>
+            </div>
+            <div class="nav-links">
+                <span id="userInfo" class="user-welcome"></span>
+                <a href="/login" id="loginLink" class="btn-outline">Login</a>
+                <a href="/register" id="registerLink" class="btn-outline">Register</a>
+                <a href="/logout" id="logoutLink" class="btn-outline" style="display:none;">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero-section">
+        <div class="hero-content">
+            <h2>Find What You Need</h2>
+            <p>Buy and sell items with fellow college students</p>
         </div>
     </div>
     
-    <hr>
-    
     <div class="container">
-        <h2>Items for Sale</h2>
-        <div id="itemsContainer"></div>
+        <div class="section-header">
+            <h2>Available Items</h2>
+            <a href="/post_item" id="postItemBtn" class="btn-primary" style="display:none;">Post New Item</a>
+        </div>
+        <div id="itemsContainer" class="items-grid"></div>
     </div>
 
     <script>
@@ -32,14 +47,18 @@
                 }
             })
             .then(user => {
-                document.getElementById('userInfo').innerHTML = `Welcome, ${user.full_name}! <a href="/post_item">Post Item</a>`;
+                document.getElementById('userInfo').innerHTML = `👤 Welcome, <strong>${user.full_name}</strong>!`;
                 document.getElementById('loginLink').style.display = 'none';
+                document.getElementById('registerLink').style.display = 'none';
                 document.getElementById('logoutLink').style.display = 'inline';
+                document.getElementById('postItemBtn').style.display = 'inline-block';
             })
             .catch(error => {
                 document.getElementById('userInfo').innerHTML = '';
                 document.getElementById('loginLink').style.display = 'inline';
+                document.getElementById('registerLink').style.display = 'inline';
                 document.getElementById('logoutLink').style.display = 'none';
+                document.getElementById('postItemBtn').style.display = 'none';
             });
 
         // Load products
@@ -48,18 +67,22 @@
             .then(products => {
                 const container = document.getElementById('itemsContainer');
                 if (products.length === 0) {
-                    container.innerHTML = '<p>No items posted yet.</p>';
+                    container.innerHTML = '<div class="empty-state"><p>📭 No items posted yet. Be the first to post!</p></div>';
                 } else {
                     container.innerHTML = products.map(item => `
-                        <div class="item">
-                            <h3>${item.title} - $${item.price}</h3>
-                            <p>${item.description}</p>
+                        <div class="item-card">
+                            <div class="item-header">
+                                <h3>${item.title}</h3>
+                                <span class="price">$${item.price}</span>
+                            </div>
+                            <p class="item-description">${item.description}</p>
+                            <button class="btn-secondary" onclick="alert('View details for: ${item.title}')">View Details</button>
                         </div>
                     `).join('');
                 }
             })
             .catch(error => {
-                document.getElementById('itemsContainer').innerHTML = '<p>No items posted yet.</p>';
+                document.getElementById('itemsContainer').innerHTML = '<div class="empty-state"><p>📭 No items posted yet. Be the first to post!</p></div>';
             });
     </script>
 </body>
