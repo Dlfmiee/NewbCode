@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marketplace | E & F Hub</title>
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
+
 <body>
 
     <!-- 1. GLOBAL NAVIGATION -->
@@ -36,7 +39,8 @@
                     <input type="text" placeholder="Search marketplace...">
                 </div>
                 <div class="profile-trigger" onclick="window.location.href='profile.html'">
-                    <img src="https://ui-avatars.com/api/?name=User+Name&background=4f46e5&color=fff" alt="Profile" class="avatar-sm">
+                    <img src="https://ui-avatars.com/api/?name=User+Name&background=4f46e5&color=fff" alt="Profile"
+                        class="avatar-sm">
                 </div>
             </div>
         </div>
@@ -53,7 +57,7 @@
 
     <!-- 3. MARKETPLACE LAYOUT -->
     <main class="container main-layout">
-        
+
         <!-- SIDEBAR: Filtering System (HCI: Control) -->
         <aside class="sidebar">
             <div class="filter-group">
@@ -113,7 +117,7 @@
 
             <!-- THE GRID (HCI: Recognition) -->
             <div class="bento-grid">
-                
+
                 <!-- Product Card 1 (Featured) -->
                 <div class="bento-card featured">
                     <div class="product-image skeleton">
@@ -207,6 +211,49 @@
 
         breadcrumbBar.addEventListener('mouseenter', () => clearTimeout(hideTimeout));
         breadcrumbBar.addEventListener('mouseleave', () => breadcrumbBar.classList.remove('is-active'));
+
+        // --- NEW: Fetch Products from Backend ---
+        document.addEventListener('DOMContentLoaded', loadProducts);
+
+        async function loadProducts() {
+            try {
+                const response = await fetch('http://127.0.0.1:5000/api/products/');
+                const products = await response.json();
+
+                const grid = document.querySelector('.bento-grid');
+                grid.innerHTML = ''; // Clear hardcoded/skeleton items
+
+                if (products.length === 0) {
+                    grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center;">No products found.</p>';
+                    return;
+                }
+
+                products.forEach(product => {
+                    const card = document.createElement('div');
+                    card.className = 'bento-card';
+                    // Optional: Add 'featured' class based on some logic
+
+                    card.innerHTML = `
+                        <div class="product-image skeleton">
+                            <span class="product-tag ${product.status === 'urgent' ? 'urgent' : 'nego'}">${product.status}</span>
+                        </div>
+                        <div class="product-info-box">
+                            <div class="price-row">
+                                <span class="p-price">RM ${product.price}</span>
+                            </div>
+                            <h4>${product.title}</h4>
+                            <p class="p-seller"><i data-lucide="user"></i> Seller #${product.seller_id.substr(0, 5)}...</p>
+                            <button class="btn btn-dark btn-sm w-100" style="margin-top: 10px;">View</button>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+                lucide.createIcons(); // Refresh icons
+            } catch (err) {
+                console.error("Failed to load products:", err);
+            }
+        }
     </script>
 </body>
+
 </html>

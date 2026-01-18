@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post Listing | E & F Hub</title>
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
+
 <body>
 
     <!-- 1. GLOBAL NAVIGATION -->
@@ -31,7 +34,8 @@
             </nav>
             <div class="nav-actions">
                 <div class="profile-trigger" onclick="window.location.href='profile.html'">
-                    <img src="https://ui-avatars.com/api/?name=User+Name&background=4f46e5&color=fff" alt="Profile" class="avatar-sm">
+                    <img src="https://ui-avatars.com/api/?name=User+Name&background=4f46e5&color=fff" alt="Profile"
+                        class="avatar-sm">
                 </div>
             </div>
         </div>
@@ -49,7 +53,7 @@
     <!-- 3. WORKFLOW CONTAINER -->
     <main class="container main-layout">
         <div class="workflow-card">
-            
+
             <!-- STATE A: UNVERIFIED (Apply for Creator) -->
             <div id="state-unverified" class="flow-state">
                 <div class="state-header">
@@ -85,9 +89,11 @@
                         <i data-lucide="upload-cloud"></i>
                         <p>Upload a photo of your Student ID / Matrix Card</p>
                         <input type="file" id="idUpload" hidden>
-                        <button type="button" class="btn btn-outline btn-sm" onclick="document.getElementById('idUpload').click()">Select File</button>
+                        <button type="button" class="btn btn-outline btn-sm"
+                            onclick="document.getElementById('idUpload').click()">Select File</button>
                     </div>
-                    <button type="button" class="btn btn-primary w-100" onclick="showState('pending')">Submit Verification</button>
+                    <button type="button" class="btn btn-primary w-100" onclick="showState('pending')">Submit
+                        Verification</button>
                 </form>
             </div>
 
@@ -123,13 +129,13 @@
                 <form class="posting-form">
                     <div class="input-group">
                         <label>Title / Name</label>
-                        <input type="text" placeholder="What are you posting?">
+                        <input type="text" id="prod-title" placeholder="What are you posting?">
                     </div>
-                    
+
                     <div class="form-grid">
                         <div class="input-group">
                             <label>Price / Rate (Optional)</label>
-                            <input type="text" placeholder="RM 0.00">
+                            <input type="text" id="prod-price" placeholder="RM 0.00">
                         </div>
                         <div class="input-group">
                             <label>Condition / Priority</label>
@@ -144,7 +150,7 @@
 
                     <div class="input-group">
                         <label>Description</label>
-                        <textarea rows="4" placeholder="Tell the boys more about it..."></textarea>
+                        <textarea id="prod-desc" rows="4" placeholder="Tell the boys more about it..."></textarea>
                     </div>
 
                     <div class="upload-area">
@@ -153,7 +159,7 @@
                         <button type="button" class="btn btn-outline btn-sm">Upload Images</button>
                     </div>
 
-                    <button class="btn btn-primary w-100">Publish to Hub</button>
+                    <button id="btn-publish" type="button" class="btn btn-primary w-100">Publish to Hub</button>
                 </form>
             </div>
 
@@ -200,6 +206,46 @@
         });
         breadcrumbBar.addEventListener('mouseenter', () => clearTimeout(hideTimeout));
         breadcrumbBar.addEventListener('mouseleave', () => breadcrumbBar.classList.remove('is-active'));
+
+        // --- NEW: Submit Product Logic ---
+        document.getElementById('btn-publish').addEventListener('click', async () => {
+            const title = document.getElementById('prod-title').value;
+            const price = document.getElementById('prod-price').value;
+            const description = document.getElementById('prod-desc').value;
+
+            if (!title || !price) {
+                alert("Please fill in Title and Price");
+                return;
+            }
+
+            try {
+                const response = await fetch('http://127.0.0.1:5000/api/products/add', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include', // Important for session cookie
+                    body: JSON.stringify({
+                        title: title,
+                        price: price,
+                        description: description
+                    })
+                });
+
+                const result = await response.json();
+                if (response.ok) {
+                    alert("Product Posted Successfully!");
+                    window.location.href = "marketplace.html";
+                } else {
+                    alert("Error: " + (result.error || "Unknown error"));
+                    if (result.error === "Login required") {
+                        window.location.href = "login.html";
+                    }
+                }
+            } catch (err) {
+                console.error("Error submitting product:", err);
+                alert("Failed to submit product.");
+            }
+        });
     </script>
 </body>
+
 </html>

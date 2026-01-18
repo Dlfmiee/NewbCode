@@ -37,6 +37,14 @@ def login():
 
     if user and bcrypt.checkpw(data['password'].encode(), user['password_hash'].encode()):
         session['user_id'] = user['user_id']
-        return jsonify({"success": True, "message": "Logged in!"}), 200
+        return jsonify({
+            "success": True, 
+            "message": "Logged in!",
+            "user": {
+                "name": user['full_name'],
+                "email": user['email'],
+                "role": user['role']
+            }
+        }), 200
     
     return jsonify({"error": "Invalid email or password"}), 401

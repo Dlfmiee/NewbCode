@@ -6,9 +6,9 @@ from backend.chats.routes import chats_bp
 from backend.reviews.routes import reviews_bp
 from backend.orders.routes import orders_bp
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../frontend', static_url_path='')
 
-# Enable CORS for all routes to allow your frontend to talk to the backend
+# Enable CORS (though now less critical since we serve frontend here)
 CORS(app, supports_credentials=True)
 
 app.secret_key = "college_marketplace_secret_2026"
@@ -22,7 +22,11 @@ app.register_blueprint(orders_bp, url_prefix='/api/orders')
 
 @app.route('/')
 def home():
-    return {"message": "College Marketplace API is live! 🚀"}
+    return app.send_static_file('index.html')
+
+@app.route('/<path:path>')
+def serve_static(path):
+    return app.send_static_file(path)
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
