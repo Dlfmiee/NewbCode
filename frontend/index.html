@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>College Marketplace</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="navbar">
+        <h1>College Marketplace</h1>
+        <div class="nav-links">
+            <span id="userInfo"></span>
+            <a href="/login" id="loginLink">Login</a>
+            <a href="/logout" id="logoutLink" style="display:none;">Logout</a>
+        </div>
+    </div>
+    
+    <hr>
+    
+    <div class="container">
+        <h2>Items for Sale</h2>
+        <div id="itemsContainer"></div>
+    </div>
+
+    <script>
+        // Check user session
+        fetch('/api/auth/me')
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Not logged in');
+                }
+            })
+            .then(user => {
+                document.getElementById('userInfo').innerHTML = `Welcome, ${user.full_name}! <a href="/post_item">Post Item</a>`;
+                document.getElementById('loginLink').style.display = 'none';
+                document.getElementById('logoutLink').style.display = 'inline';
+            })
+            .catch(error => {
+                document.getElementById('userInfo').innerHTML = '';
+                document.getElementById('loginLink').style.display = 'inline';
+                document.getElementById('logoutLink').style.display = 'none';
+            });
+
+        // Load products
+        fetch('/api/products')
+            .then(response => response.json())
+            .then(products => {
+                const container = document.getElementById('itemsContainer');
+                if (products.length === 0) {
+                    container.innerHTML = '<p>No items posted yet.</p>';
+                } else {
+                    container.innerHTML = products.map(item => `
+                        <div class="item">
+                            <h3>${item.title} - $${item.price}</h3>
+                            <p>${item.description}</p>
+                        </div>
+                    `).join('');
+                }
+            })
+            .catch(error => {
+                document.getElementById('itemsContainer').innerHTML = '<p>No items posted yet.</p>';
+            });
+    </script>
+</body>
+</html>
