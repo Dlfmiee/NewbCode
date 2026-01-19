@@ -320,3 +320,497 @@ input:focus, textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 4p
     .btn { width: 100%; }
     .footer-grid { grid-template-columns: 1fr; }
 }
+/* ==========================================================================
+   DORM BULLETIN REFINEMENT
+   ========================================================================== */
+.section-header-mini {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.header-icon { width: 18px; color: var(--slate-400); }
+
+.news-item {
+    background: var(--white);
+    padding: 18px;
+    border-radius: 16px;
+    margin-bottom: 15px;
+    border: 1px solid var(--slate-200);
+    transition: transform 0.2s ease;
+}
+.news-item:hover { transform: scale(1.02); }
+
+.news-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.news-item h4 { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+.news-item p { font-size: 0.8rem; color: var(--slate-600); line-height: 1.4; }
+.news-time { font-size: 0.7rem; font-weight: 600; color: var(--slate-400); }
+
+/* Notice Block Colors */
+.blok-e-notice { border-left: 4px solid #3b82f6; } /* Blue for E */
+.blok-f-notice { border-left: 4px solid #ef4444; } /* Red for F */
+
+.news-tag {
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+.news-tag.blok-e { background: #eff6ff; color: #1e40af; }
+.news-tag.blok-f { background: #fef2f2; color: #b91c1c; }
+
+/* Safety Card Glow */
+.premium-safety {
+    background: var(--navy);
+    color: white;
+    padding: 24px;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+}
+.shield-glow {
+    width: 40px;
+    height: 40px;
+    background: rgba(16, 185, 129, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary);
+    margin-bottom: 12px;
+}
+.safety-link {
+    color: var(--secondary);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 12px;
+}
+
+/* ==========================================================================
+   MARKETPLACE CARD REFINEMENT
+   ========================================================================== */
+.product-img-container {
+    width: 100%;
+    height: 160px;
+    background: var(--slate-100);
+    position: relative;
+}
+.img-placeholder { width: 100%; height: 100%; }
+
+.product-info-box { padding: 18px; }
+.p-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.p-cat { font-size: 0.7rem; font-weight: 700; color: var(--primary); text-transform: uppercase; }
+.p-price { font-size: 1.1rem; font-weight: 800; color: var(--navy); }
+
+.bento-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.p-desc { font-size: 0.8rem; color: var(--slate-600); margin-bottom: 15px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+.p-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 12px;
+    border-top: 1px solid var(--slate-100);
+}
+.p-seller { font-size: 0.75rem; color: var(--slate-400); display: flex; align-items: center; gap: 4px; }
+
+.btn-quick-view {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--slate-100);
+    border: none;
+    color: var(--navy);
+    cursor: pointer;
+    transition: 0.2s;
+}
+.btn-quick-view:hover { background: var(--primary); color: white; }
+
+/* Featured Card Special Height */
+.featured-product { grid-row: span 1; } /* Keeping it tidy */
+/* ==========================================================================
+   STUNNING BLURRED HEADER EFFECT
+   ========================================================================== */
+.hero-hub {
+    position: relative;
+    overflow: hidden; /* Clips the blur edges */
+    background: var(--bg); /* Fallback */
+    padding: 120px 0; /* Extra breathing room */
+}
+
+.hero-bg-image {
+    position: absolute;
+    top: -10%; /* Slight offset to ensure blur covers edges */
+    left: -5%;
+    width: 110%;
+    height: 120%;
+    background-size: cover;
+    background-position: center;
+    filter: blur(0.01px) brightness(0.90); /* THE BLUR EFFECT */
+    z-index: 0;
+    transform: scale(1.05); /* Prevents white edges from blur */
+}
+
+.hero-bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Gradient goes from clear to slightly white to blend into the news section below */
+    background: linear-gradient(
+        to bottom, 
+        rgba(248, 250, 252, 0.4) 0%, 
+        rgba(248, 250, 252, 0.8) 70%, 
+        var(--bg) 100%
+    );
+    z-index: 1;
+}
+
+/* Enhancing the text on top of the image */
+.hero-title {
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.5);
+}
+
+.hero-subtitle {
+    color: var(--navy);
+    font-weight: 600;
+}
+/* ==========================================================================
+   MARKETPLACE SPECIFIC ENHANCEMENTS
+   ========================================================================== */
+
+.market-hero {
+    background: var(--navy);
+    padding: 60px 0 40px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.market-hero h2 { font-size: 2.2rem; font-weight: 800; }
+.market-hero p { opacity: 0.6; font-size: 1rem; }
+
+/* Filter Sidebar Cards */
+.filter-card {
+    background: var(--white);
+    padding: 24px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--slate-200);
+}
+
+.cat-list-market {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cat-pill {
+    text-align: left;
+    padding: 10px 14px;
+    border-radius: 8px;
+    background: var(--slate-50);
+    border: 1px solid transparent;
+    color: var(--slate-600);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: 0.2s;
+}
+
+.cat-pill:hover, .cat-pill.active {
+    background: var(--primary-light);
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+/* Modern Checkboxes */
+.check-item-modern {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.check-item-modern input { display: none; }
+
+.custom-check {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--slate-200);
+    border-radius: 6px;
+    position: relative;
+    transition: 0.2s;
+}
+
+.check-item-modern input:checked + .custom-check {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.check-item-modern input:checked + .custom-check::after {
+    content: '';
+    position: absolute;
+    top: 2px; left: 6px;
+    width: 5px; height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* Catalog Top Controls */
+.catalog-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding: 15px;
+    background: white;
+    border-radius: 12px;
+    border: 1px solid var(--slate-200);
+}
+
+.stat-bubble {
+    background: var(--navy);
+    color: white;
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.sort-select-premium {
+    border: none;
+    background: transparent;
+    font-weight: 700;
+    color: var(--navy);
+    outline: none;
+    cursor: pointer;
+}
+
+/* Featured Card in Market */
+.featured-product {
+    grid-column: span 2;
+    background: linear-gradient(to bottom right, #ffffff, #f9fafb);
+}
+
+.sidebar-help {
+    margin-top: 30px;
+    padding: 15px;
+    background: #fffbeb;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    color: #92400e;
+    border: 1px solid #fde68a;
+}
+/* ==========================================================================
+   SERVICES HUB - PREMIUM ENHANCEMENTS
+   ========================================================================== */
+
+.hero-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.live-stats-mini {
+    background: rgba(255,255,255,0.1);
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+/* Sidebar Specifics */
+.search-input-inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.search-input-inner i {
+    position: absolute;
+    left: 12px;
+    width: 16px;
+    color: var(--slate-400);
+}
+.search-input-inner input {
+    padding-left: 38px !important;
+}
+
+/* Service Row Cards */
+.services-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.service-row-card {
+    background: var(--white);
+    border: 1px solid var(--slate-200);
+    border-radius: 20px;
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.service-row-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary);
+}
+
+.s-card-main {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.s-icon-box {
+    width: 64px;
+    height: 64px;
+    background: var(--slate-100);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    flex-shrink: 0;
+}
+
+.demanded-icon { background: #fffbeb; color: #f59e0b; }
+
+.s-badge-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.s-tag {
+    font-size: 0.65rem;
+    font-weight: 800;
+    background: var(--slate-100);
+    color: var(--slate-600);
+    padding: 4px 10px;
+    border-radius: 6px;
+    text-transform: uppercase;
+}
+
+.service-row-card h4 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 4px;
+}
+
+.s-desc {
+    color: var(--slate-600);
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+    max-width: 500px;
+}
+
+.s-meta {
+    display: flex;
+    gap: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--slate-400);
+}
+
+.s-meta i { width: 14px; height: 14px; vertical-align: middle; margin-right: 4px; }
+
+.price-tag { color: var(--secondary); font-weight: 800; }
+
+/* Special Highlights */
+.status-online { border-left: 6px solid var(--secondary); }
+.status-later { border-left: 6px solid #3b82f6; }
+.demanded-highlight { 
+    border: 2px dashed #fcd34d; 
+    background: #fffcf0;
+    border-left: 6px solid #f97316;
+}
+
+.s-card-actions {
+    flex-shrink: 0;
+}
+
+/* Responsiveness */
+@media (max-width: 900px) {
+    .service-row-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+    .s-card-actions { width: 100%; }
+    .s-card-actions button { width: 100%; }
+}
+/* ==========================================================================
+   PROFILE COMPACT MODE
+   ========================================================================== */
+
+/* Shrink the overall hero height */
+.hero-hub.profile-mode {
+    padding: 50px 0; /* Reduced from 100px */
+    min-height: auto;
+}
+
+/* Reduce the giant font size */
+.hero-hub.profile-mode .hero-title {
+    font-size: 2.2rem; /* Reduced from 3.5rem */
+    margin: 10px 0;
+}
+
+.hero-hub.profile-mode .hero-subtitle {
+    font-size: 0.9rem;
+    max-width: 450px;
+}
+
+/* Shrink the Stat Cards */
+.hero-hub.profile-mode .stat-card {
+    padding: 15px;
+    min-width: 120px;
+}
+
+.hero-hub.profile-mode .stat-card h3 {
+    font-size: 1.4rem;
+}
+
+/* Tighten the button spacing */
+.hero-hub.profile-mode .hero-btns {
+    margin-top: 20px;
+    gap: 12px;
+}
+
+.hero-hub.profile-mode .btn {
+    padding: 10px 24px;
+    font-size: 0.9rem;
+    min-width: 140px;
+}
+
+/* Sidebar fix: prevent the user card from being too wide */
+.sidebar {
+    width: 260px; /* Locked width */
+}
+
+.profile-card-main {
+    padding-bottom: 20px;
+}
+
+.avatar-lg {
+    width: 90px; /* Reduced from 110px */
+    height: 90px;
+}

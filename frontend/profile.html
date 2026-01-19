@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard | E & F Hub</title>
+    <!-- Linking the Master CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <!-- 1. GLOBAL NAVIGATION (Consistent) -->
+    <header class="glass-nav sticky">
+        <div class="container nav-wrapper">
+            <div class="brand" onclick="window.location.href='index.html'">
+                <div class="bento-logo">
+                    <span class="sq"></span><span class="sq"></span>
+                    <span class="sq"></span><span class="sq"></span>
+                </div>
+                <div class="brand-text">
+                    <h1>E & F Hub</h1>
+                    <span class="tagline">Boys' Dormitory Portal</span>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-item" id="homeTrigger">Home</a>
+                <a href="marketplace.html" class="nav-item">Marketplace</a>
+                <a href="services.html" class="nav-item">Services</a>
+                <a href="add-product.html" class="nav-item">Post Listing</a>
+            </nav>
+            <div class="nav-actions">
+                <div class="search-input">
+                    <i data-lucide="search"></i>
+                    <input type="text" placeholder="Search...">
+                </div>
+                <div class="profile-trigger">
+                    <img src="https://ui-avatars.com/api/?name=Ariff+Syahmi&background=4f46e5&color=fff" alt="Profile" class="avatar-sm">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. BREADCRUMBS (Hidden, Home Hover only) -->
+    <section class="breadcrumb-bar" id="breadcrumbBar">
+        <nav class="breadcrumbs">
+            <a href="index.html"><i data-lucide="home"></i> Home</a>
+            <span class="sep"><i data-lucide="chevron-right"></i></span>
+            <span class="current">My Profile</span>
+        </nav>
+    </section>
+
+<!-- 3. PERSONAL HERO HUB (Compact Mode) -->
+    <section class="hero-hub profile-mode">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <span class="badge">Resident Account</span>
+                <h2 class="hero-title">Welcome back, <br><span>Ariff Syahmi.</span></h2>
+                <p class="hero-subtitle">Manage your listings, track your services, and see your community vouchers.</p>
+                
+                <div class="hero-btns">
+                    <button class="btn btn-primary" onclick="window.location.href='add-product.html'">+ Post Listing</button>
+                    <button class="btn btn-dark"><i data-lucide="edit-3"></i> Edit Profile</button>
+                </div>
+            </div>
+
+            <!-- Stats closer and smaller -->
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <h3>05</h3>
+                    <p>Active</p>
+                </div>
+                <div class="stat-card">
+                    <h3>14</h3>
+                    <p>Vouches</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. MAIN DASHBOARD CONTENT -->
+    <main class="container main-layout" style="margin-top: -20px;"> <!-- Slight overlap for better flow -->
+        
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="profile-card-main">
+                <div class="profile-banner"></div>
+                <div class="avatar-large-wrapper">
+                    <img src="https://ui-avatars.com/api/?name=Ariff+Syahmi&background=4f46e5&color=fff" alt="User" class="avatar-lg">
+                </div>
+                <div class="trust-badge-large"><i data-lucide="shield-check"></i> 98% Trust</div>
+                <p style="margin-top: 8px; font-size: 0.85rem; font-weight: 700; color: var(--navy);">Room E302 • Blok E</p>
+            </div>
+            <!-- Badges shelf follows... -->
+        </aside>
+
+        <!-- CONTENT area follows... -->
+        <!-- CONTENT AREA: Managed Items & Vouches -->
+        <section class="content-area">
+            
+            <div class="profile-tabs">
+                <button class="tab-btn active">Active Listings</button>
+                <button class="tab-btn">Offered Services</button>
+                <button class="tab-btn">Trade History</button>
+            </div>
+
+            <!-- PERSONAL SLIDER (Active Items) -->
+            <div class="section-header">
+                <div class="header-main">
+                    <h3>My Items</h3>
+                    <p>Swipe to manage your active marketplace listings</p>
+                </div>
+            </div>
+
+            <div class="services-scroll-container" id="profileScroll">
+                <!-- Item 1 -->
+                <div class="service-mini-card">
+                    <div class="card-top">
+                        <div class="s-icon"><i data-lucide="package"></i></div>
+                        <span class="status-badge online">Live</span>
+                    </div>
+                    <div class="card-body">
+                        <h4>Calculus 1 Textbook</h4>
+                        <p>RM 35.00 • Posted 2 days ago</p>
+                    </div>
+                    <div class="card-footer-btns">
+                        <button class="btn-icon edit"><i data-lucide="edit-2"></i></button>
+                        <button class="btn-icon delete"><i data-lucide="trash-2"></i></button>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="service-mini-card">
+                    <div class="card-top">
+                        <div class="s-icon"><i data-lucide="mouse"></i></div>
+                        <span class="status-badge online">Live</span>
+                    </div>
+                    <div class="card-body">
+                        <h4>Logitech Gaming Mouse</h4>
+                        <p>RM 80.00 • Posted 5 days ago</p>
+                    </div>
+                    <div class="card-footer-btns">
+                        <button class="btn-icon edit"><i data-lucide="edit-2"></i></button>
+                        <button class="btn-icon delete"><i data-lucide="trash-2"></i></button>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="service-mini-card">
+                    <div class="card-top">
+                        <div class="s-icon"><i data-lucide="monitor"></i></div>
+                        <span class="status-badge online">Live</span>
+                    </div>
+                    <div class="card-body">
+                        <h4>24" Dell Monitor</h4>
+                        <p>RM 250.00 • Posted 1 week ago</p>
+                    </div>
+                    <div class="card-footer-btns">
+                        <button class="btn-icon edit"><i data-lucide="edit-2"></i></button>
+                        <button class="btn-icon delete"><i data-lucide="trash-2"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slider Track -->
+            <div class="custom-scroll-track">
+                <div class="custom-scroll-thumb" id="scrollThumb"></div>
+            </div>
+
+            <!-- VOUCH SECTION -->
+            <div class="section-header" style="margin-top: 40px;">
+                <div class="header-main">
+                    <h3>Community Vouches</h3>
+                    <p>Feedback from Blok E & F boys</p>
+                </div>
+            </div>
+
+            <div class="vouch-grid">
+                <div class="vouch-card">
+                    <div class="vouch-header">
+                        <strong>Farhan (F210)</strong>
+                        <span class="s-badge active">Trusted</span>
+                    </div>
+                    <p>"Quick delivery to my room. Item condition 10/10. Recommended!"</p>
+                </div>
+                <div class="vouch-card">
+                    <div class="vouch-header">
+                        <strong>Ziq (E105)</strong>
+                        <span class="s-badge active">Good Service</span>
+                    </div>
+                    <p>"Printing quality is sharp and cheap. Saved my assignment."</p>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- 5. FOOTER (Consistent) -->
+    <footer class="monolith-footer">
+        <div class="container footer-grid">
+            <div class="footer-col"><h2>E & F Hub</h2><p>The boys' Blok E & Blok F community portal.</p></div>
+            <div class="footer-col"><h4>Support</h4><a href="#">Safety Rules</a><a href="#">Terms of Use</a></div>
+            <div class="footer-col"><h4>Emergency</h4><p>Dorm Office: +6012-3456789</p></div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT: Reusing your Scroll & Hover Logic -->
+    <script>
+        lucide.createIcons();
+
+        // --- 1. SLIDER LOGIC ---
+        const slider = document.getElementById('profileScroll');
+        const thumb = document.getElementById('scrollThumb');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            slider.classList.add('active');
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+        slider.addEventListener('mouseleave', () => { isDown = false; });
+        slider.addEventListener('mouseup', () => { isDown = false; });
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return; 
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 2; 
+            slider.scrollLeft = scrollLeft - walk;
+        });
+
+        slider.addEventListener('scroll', () => {
+            const maxScroll = slider.scrollWidth - slider.clientWidth;
+            const scrollPercent = (slider.scrollLeft / maxScroll) * 100;
+            const moveX = (scrollPercent / 100) * 140; 
+            thumb.style.transform = `translateX(${moveX}px)`;
+        });
+
+        // --- 2. BREADCRUMB LOGIC ---
+        const homeTrigger = document.getElementById('homeTrigger');
+        const breadcrumbBar = document.getElementById('breadcrumbBar');
+        let hideTimeout;
+
+        homeTrigger.addEventListener('mouseenter', () => {
+            clearTimeout(hideTimeout);
+            breadcrumbBar.classList.add('is-active');
+        });
+        homeTrigger.addEventListener('mouseleave', () => {
+            hideTimeout = setTimeout(() => {
+                if (!breadcrumbBar.matches(':hover')) breadcrumbBar.classList.remove('is-active');
+            }, 200);
+        });
+        breadcrumbBar.addEventListener('mouseenter', () => clearTimeout(hideTimeout));
+        breadcrumbBar.addEventListener('mouseleave', () => breadcrumbBar.classList.remove('is-active'));
+    </script>
+</body>
+</html>

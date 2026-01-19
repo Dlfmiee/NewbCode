@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E & F Hub | Boys' Dormitory Portal</title>
+    <!-- Linking the Master CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- Typography -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
-    <!-- 1. GLOBAL NAVIGATION -->
+    <!-- 1. GLOBAL NAVIGATION (HCI: Consistency) -->
     <header class="glass-nav sticky">
         <div class="container nav-wrapper">
             <div class="brand" onclick="window.location.href='index.html'">
@@ -25,6 +28,7 @@
             </div>
             
             <nav class="nav-links">
+                <!-- Precision Trigger ID -->
                 <a href="index.html" class="nav-item active" id="homeTrigger">Home</a>
                 <a href="marketplace.html" class="nav-item">Marketplace</a>
                 <a href="services.html" class="nav-item">Services</a>
@@ -38,39 +42,42 @@
                 </div>
                 
                 <div class="profile-trigger" onclick="window.location.href='profile.html'">
-                    <img src="https://ui-avatars.com/api/?name=User+Name&background=4f46e5&color=fff" alt="Profile" class="avatar-sm">
-                    <div class="status-indicator"></div>
+                    <img src="https://ui-avatars.com/api/?name=User&background=4f46e5&color=fff" alt="Profile" class="avatar-sm">
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- 2. ON-DEMAND BREADCRUMB BOX -->
+    <!-- 2. ON-DEMAND BREADCRUMB BOX (Precision Hover) -->
     <section class="breadcrumb-bar" id="breadcrumbBar">
         <nav class="breadcrumbs">
             <a href="index.html"><i data-lucide="home"></i> Home</a>
-            <span class="sep"><i data-lucide="chevron-right"></i></span>
-            <a href="marketplace.html">Marketplace</a>
             <span class="sep"><i data-lucide="chevron-right"></i></span>
             <span class="current">Textbooks</span>
         </nav>
     </section>
 
-    <!-- 3. HERO HUB -->
+<!-- 3. HERO HUB (Updated with Background Image) -->
     <section class="hero-hub">
-        <div class="container hero-grid">
+        <!-- New Background Layer -->
+        <div class="hero-bg-image" style="background-image: url(img/kmlimage.jpg);"></div>
+        <div class="hero-bg-overlay"></div>
+
+        <div class="container hero-grid" style="position: relative; z-index: 2;">
             <div class="hero-text">
                 <span class="badge">Blok E & Blok F Official</span>
                 <h2 class="hero-title">Everything you need, <br><span>Right in the Dorm.</span></h2>
                 <p class="hero-subtitle">Stay updated with dorm news, find printing services, or trade gear with your neighbors in Blok E and F.</p>
+                
                 <div class="hero-btns">
                     <button class="btn btn-dark" onclick="document.getElementById('news').scrollIntoView()">View News</button>
                     <button class="btn btn-primary" onclick="window.location.href='marketplace.html'">Go to Market</button>
                 </div>
             </div>
+
             <div class="hero-stats">
                 <div class="stat-card">
-                    <h3>12+</h3>
+                    <h3>3</h3>
                     <p>Services Active</p>
                 </div>
                 <div class="stat-card">
@@ -81,35 +88,50 @@
         </div>
     </section>
 
-    <!-- 4. MAIN LAYOUT -->
+    <!-- 4. MAIN HUB LAYOUT (Sidebar & Area) -->
     <main class="container main-layout" id="news">
         
         <!-- SIDEBAR: News & Alerts -->
         <aside class="sidebar">
             <div class="filter-group">
-                <h4>Dorm Bulletin</h4>
+                <div class="section-header-mini">
+                    <h4>Dorm Bulletin</h4>
+                    <i data-lucide="megaphone" class="header-icon"></i>
+                </div>
+        
                 <div class="news-feed">
-                    <div class="news-item">
-                        <span class="news-tag blok-e">Blok E</span>
-                        <p>Water supply disruption tonight 10PM - 12AM.</p>
-                        <span class="news-time">2h ago</span>
+                    <!-- Blok E Notice -->
+                    <div class="news-item blok-e-notice">
+                        <div class="news-meta">
+                            <span class="news-tag blok-e">Blok E</span>
+                            <span class="news-time">2h ago</span>
+                        </div>
+                        <h4>Water supply disruption</h4>
+                        <p>Maintenance tonight 10PM - 12AM. Fill up your buckets!</p>
                     </div>
-                    <div class="news-item">
-                        <span class="news-tag blok-f">Blok F</span>
-                        <p>Futsal match registration is now open!</p>
-                        <span class="news-time">5h ago</span>
+
+                    <!-- Blok F Notice -->
+                    <div class="news-item blok-f-notice">
+                        <div class="news-meta">
+                            <span class="news-tag blok-f">Blok F</span>
+                            <span class="news-time">5h ago</span>
+                        </div>
+                        <h4>Futsal Registration</h4>
+                        <p>Registration for Inter-Blok match is now open at F-Lobby.</p>
                     </div>
                 </div>
             </div>
 
-            <div class="safety-card">
-                <i data-lucide="shield-check"></i>
-                <p>Verify your room number before trading. Safety first.</p>
-                <a href="#">Read Safety Guidelines</a>
+            <!-- Verification Box Refined -->
+            <div class="safety-card premium-safety">
+                <div class="shield-glow"><i data-lucide="shield-check"></i></div>
+                <h4>Verify Room Status</h4>
+                <p>Ensure a safe trade by verifying your room number first.</p>
+                <a href="#" class="safety-link">Get Verified <i data-lucide="arrow-right"></i></a>
             </div>
         </aside>
 
-        <!-- CONTENT AREA -->
+        <!-- CONTENT AREA: Services & Market Preview -->
         <section class="content-area">
             
             <div class="section-header">
@@ -120,7 +142,7 @@
                 <a href="services.html" class="view-all">View All <i data-lucide="arrow-right"></i></a>
             </div>
 
-            <!-- 1. The Container -->
+            <!-- 1. The Slider Container -->
             <div class="services-scroll-container" id="servicesScroll">
                 
                 <div class="service-mini-card">
@@ -147,7 +169,7 @@
                         <p>Free Diagnosis • Room F210</p>
                     </div>
                     <div class="card-footer">
-                        <button class="btn-disabled" disabled>Unavailable</button>
+                        <button class="btn" disabled style="width: 100%; background: var(--slate-100); color: var(--slate-400);">Unavailable</button>
                     </div>
                 </div>
 
@@ -181,24 +203,79 @@
 
             </div>
 
-            <!-- 2. THE NEW SLIDER TRACK -->
+            <!-- 2. THE CUSTOM TRACK -->
             <div class="custom-scroll-track">
                 <div class="custom-scroll-thumb" id="scrollThumb"></div>
             </div>
 
+            <!-- B. MARKETPLACE INCOMINGS -->
             <div class="section-header" style="margin-top: 40px;">
-                <div class="header-main">
-                    <h3>New in Marketplace</h3>
-                    <p>Fresh listings from the boys</p>
-                </div>
-                <a href="marketplace.html" class="view-all">Shop All <i data-lucide="arrow-right"></i></a>
-            </div>
+        <div class="header-main">
+            <h3>New in Marketplace</h3>
+            <p>Authentic student listings</p>
+        </div>
+        <a href="marketplace.html" class="view-all">Shop All <i data-lucide="arrow-right"></i></a>
+    </div>
 
-            <div class="bento-grid">
-                <div class="bento-card featured skeleton"></div>
-                <div class="bento-card skeleton"></div>
-                <div class="bento-card skeleton"></div>
+    <div class="bento-grid">
+        <!-- Featured Product -->
+        <div class="bento-card featured-product">
+            <div class="product-img-container">
+                <div class="img-placeholder skeleton"></div>
+                <span class="product-tag urgent">Urgent</span>
             </div>
+            <div class="product-info-box">
+                <div class="p-header">
+                    <span class="p-cat">Electronics</span>
+                    <span class="p-price">RM 850</span>
+                </div>
+                <h4>MacBook Air M1 (Silver)</h4>
+                <p class="p-desc">8GB/256GB. Condition 9/10. Used for 1 year.</p>
+                <div class="p-footer">
+                    <span class="p-seller"><i data-lucide="map-pin"></i> Blok E, 204</span>
+                    <button class="btn-quick-view"><i data-lucide="eye"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Standard Product 1 -->
+        <div class="bento-card">
+            <div class="product-img-container">
+                <div class="img-placeholder skeleton"></div>
+                <span class="product-tag nego">Nego</span>
+            </div>
+            <div class="product-info-box">
+                <div class="p-header">
+                    <span class="p-cat">Books</span>
+                    <span class="p-price">RM 45</span>
+                </div>
+                <h4>Calculus: Early Transcendentals</h4>
+                <div class="p-footer">
+                    <span class="p-seller"><i data-lucide="map-pin"></i> Blok F, 102</span>
+                    <button class="btn-quick-view"><i data-lucide="plus"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Standard Product 2 -->
+        <div class="bento-card">
+            <div class="product-img-container">
+                <div class="img-placeholder skeleton"></div>
+            </div>
+            <div class="product-info-box">
+                <div class="p-header">
+                    <span class="p-cat">Dorm Gear</span>
+                    <span class="p-price">RM 25</span>
+                </div>
+                <h4>Standing Fan (Mistral)</h4>
+                <div class="p-footer">
+                    <span class="p-seller"><i data-lucide="map-pin"></i> Blok E, 411</span>
+                    <button class="btn-quick-view"><i data-lucide="plus"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
         </section>
     </main>
@@ -207,9 +284,7 @@
     <footer class="monolith-footer">
         <div class="container footer-grid">
             <div class="footer-col">
-                <div class="brand">
-                    <h2 style="color: white; margin-bottom: 10px;">E & F Hub</h2>
-                </div>
+                <h2 style="color: white; margin-bottom: 10px;">E & F Hub</h2>
                 <p style="opacity: 0.7;">The exclusive portal for students of Blok E and Blok F. Trade, share, and connect.</p>
             </div>
             <div class="footer-col">
@@ -235,29 +310,21 @@
     <script>
         lucide.createIcons();
 
-        // --- 1. THE SLIDER LOGIC YOU PROVIDED ---
+        // --- 1. SLIDER DRAG & SCROLL LOGIC ---
         const slider = document.getElementById('servicesScroll');
         const thumb = document.getElementById('scrollThumb');
         let isDown = false;
         let startX;
         let scrollLeft;
 
-        // Mouse Drag Logic
         slider.addEventListener('mousedown', (e) => {
             isDown = true;
             slider.classList.add('active');
             startX = e.pageX - slider.offsetLeft;
             scrollLeft = slider.scrollLeft;
         });
-
-        slider.addEventListener('mouseleave', () => {
-            isDown = false;
-        });
-
-        slider.addEventListener('mouseup', () => {
-            isDown = false;
-        });
-
+        slider.addEventListener('mouseleave', () => { isDown = false; });
+        slider.addEventListener('mouseup', () => { isDown = false; });
         slider.addEventListener('mousemove', (e) => {
             if (!isDown) return; 
             e.preventDefault();
@@ -266,20 +333,16 @@
             slider.scrollLeft = scrollLeft - walk;
         });
 
-        // Update Custom Track Thumb
+        // Update Slider Thumb Position
         slider.addEventListener('scroll', () => {
             const maxScroll = slider.scrollWidth - slider.clientWidth;
             const scrollPercent = (slider.scrollLeft / maxScroll) * 100;
-            
-            const trackWidth = 200;
-            const thumbWidth = 60;
-            const maxThumbMove = trackWidth - thumbWidth;
-            
-            const moveX = (scrollPercent / 100) * maxThumbMove;
+            // 200px (track) - 60px (thumb) = 140px max move
+            const moveX = (scrollPercent / 100) * 140; 
             thumb.style.transform = `translateX(${moveX}px)`;
         });
 
-        // --- 2. BREADCRUMB LOGIC ---
+        // --- 2. BREADCRUMB HOVER LOGIC ---
         const homeTrigger = document.getElementById('homeTrigger');
         const breadcrumbBar = document.getElementById('breadcrumbBar');
         let hideTimeout;

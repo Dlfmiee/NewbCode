@@ -1,1 +1,224 @@
-ys
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace | E & F Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <!-- 1. GLOBAL NAVIGATION -->
+    <header class="glass-nav sticky">
+        <div class="container nav-wrapper">
+            <div class="brand" onclick="window.location.href='index.html'">
+                <div class="bento-logo">
+                    <span class="sq"></span><span class="sq"></span>
+                    <span class="sq"></span><span class="sq"></span>
+                </div>
+                <div class="brand-text">
+                    <h1>E & F Hub</h1>
+                    <span class="tagline">Boys' Dormitory Portal</span>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-item" id="homeTrigger">Home</a>
+                <a href="marketplace.html" class="nav-item active">Marketplace</a>
+                <a href="services.html" class="nav-item">Services</a>
+                <a href="add-product.html" class="nav-item">Post Listing</a>
+            </nav>
+            <div class="nav-actions">
+                <div class="search-input">
+                    <i data-lucide="search"></i>
+                    <input type="text" placeholder="Search marketplace...">
+                </div>
+                <div class="profile-trigger" onclick="window.location.href='profile.html'">
+                    <img src="https://ui-avatars.com/api/?name=User+Name&background=4f46e5&color=fff" alt="Profile" class="avatar-sm">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. BREADCRUMBS (Hidden by default, Home Hover only) -->
+    <section class="breadcrumb-bar" id="breadcrumbBar">
+        <nav class="breadcrumbs">
+            <a href="index.html"><i data-lucide="home"></i> Home</a>
+            <span class="sep"><i data-lucide="chevron-right"></i></span>
+            <span class="current">Marketplace</span>
+        </nav>
+    </section>
+
+    <!-- 3. MARKETPLACE HERO (Visual Focus) -->
+    <div class="market-hero">
+        <div class="container">
+            <h2>Marketplace</h2>
+            <p>Quality items from the boys in Blok E & F</p>
+        </div>
+    </div>
+
+    <!-- 4. MAIN LAYOUT -->
+    <main class="container main-layout">
+
+        <!-- SIDEBAR: Interactive Filters -->
+        <aside class="sidebar">
+            <div class="filter-card">
+                <div class="filter-group">
+                    <h4>Categories</h4>
+                    <div class="cat-list-market">
+                        <button class="cat-pill active">All Items</button>
+                        <button class="cat-pill">Textbooks</button>
+                        <button class="cat-pill">Electronics</button>
+                        <button class="cat-pill">Dorm Gear</button>
+                        <button class="cat-pill">Clothing</button>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h4>Seller Location</h4>
+                    <label class="check-item-modern">
+                        <input type="checkbox" checked>
+                        <span class="custom-check"></span>
+                        <span>Blok E</span>
+                    </label>
+                    <label class="check-item-modern">
+                        <input type="checkbox" checked>
+                        <span class="custom-check"></span>
+                        <span>Blok F</span>
+                    </label>
+                </div>
+
+                <div class="filter-group">
+                    <h4>Condition</h4>
+                    <label class="check-item-modern">
+                        <input type="checkbox">
+                        <span class="custom-check"></span>
+                        <span>Brand New</span>
+                    </label>
+                    <label class="check-item-modern">
+                        <input type="checkbox">
+                        <span class="custom-check"></span>
+                        <span>Gently Used</span>
+                    </label>
+                </div>
+
+                <div class="sidebar-help">
+                    <p>Can't find it? Ask in the <b>Buying Channel</b>.</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- CATALOG AREA -->
+        <section class="content-area">
+            <div class="catalog-controls">
+                <div class="stat-bubble">
+                    <span id="itemCount">0</span> Listings Found
+                </div>
+                <div class="sort-wrapper">
+                    <i data-lucide="filter" style="width: 16px;"></i>
+                    <select class="sort-select-premium">
+                        <option>Newest First</option>
+                        <option>Price: Low to High</option>
+                        <option>Price: High to Low</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- THE BENTO GRID -->
+            <div class="bento-grid" id="productGrid">
+                <!-- Skeletons show while JS fetches -->
+                <div class="bento-card skeleton" style="height: 320px;"></div>
+                <div class="bento-card skeleton" style="height: 320px;"></div>
+                <div class="bento-card skeleton" style="height: 320px;"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 5. FOOTER -->
+    <footer class="monolith-footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h2>E & F Hub</h2>
+                <p>Secure student-to-student trade portal.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Guidelines</h4>
+                <a href="#">Safety Rules</a>
+                <a href="#">Prohibited Items</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // --- Home Hover Logic (Consistency) ---
+        const homeTrigger = document.getElementById('homeTrigger');
+        const breadcrumbBar = document.getElementById('breadcrumbBar');
+        let hideTimeout;
+
+        homeTrigger.addEventListener('mouseenter', () => {
+            clearTimeout(hideTimeout);
+            breadcrumbBar.classList.add('is-active');
+        });
+
+        homeTrigger.addEventListener('mouseleave', () => {
+            hideTimeout = setTimeout(() => {
+                if (!breadcrumbBar.matches(':hover')) breadcrumbBar.classList.remove('is-active');
+            }, 200);
+        });
+
+        breadcrumbBar.addEventListener('mouseenter', () => clearTimeout(hideTimeout));
+        breadcrumbBar.addEventListener('mouseleave', () => breadcrumbBar.classList.remove('is-active'));
+
+        // --- DYNAMIC DATA FETCHING ---
+        async function loadProducts() {
+            try {
+                const response = await fetch('http://127.0.0.1:5000/api/products/');
+                const products = await response.json();
+                const grid = document.getElementById('productGrid');
+                const counter = document.getElementById('itemCount');
+                
+                grid.innerHTML = ''; 
+                counter.innerText = products.length;
+
+                products.forEach((p, index) => {
+                    const card = document.createElement('div');
+                    // Every 4th item becomes "Featured" (wide) for visual interest
+                    card.className = (index % 5 === 0) ? 'bento-card featured-product' : 'bento-card';
+                    
+                    card.innerHTML = `
+                        <div class="product-img-container">
+                            <div class="img-placeholder skeleton"></div>
+                            <span class="product-tag ${p.status === 'urgent' ? 'urgent' : 'nego'}">
+                                ${p.status.toUpperCase()}
+                            </span>
+                        </div>
+                        <div class="product-info-box">
+                            <div class="p-header">
+                                <span class="p-cat">Market Listing</span>
+                                <span class="p-price">RM ${p.price}</span>
+                            </div>
+                            <h4>${p.title}</h4>
+                            <div class="p-footer">
+                                <span class="p-seller"><i data-lucide="map-pin"></i> Seller: ${p.seller_id.substr(0,4)}</span>
+                                <button class="btn-quick-view" onclick="window.location.href='product.html?id=${p.product_id}'">
+                                    <i data-lucide="chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+                lucide.createIcons();
+            } catch (err) {
+                console.error("Fetch error:", err);
+                document.getElementById('productGrid').innerHTML = "<p>Error connecting to E&F Hub backend.</p>";
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadProducts);
+    </script>
+</body>
+</html>

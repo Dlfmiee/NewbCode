@@ -41,7 +41,7 @@
         </div>
     </header>
 
-    <!-- 2. FLOATING BREADCRUMB BOX (Precision Triggered) -->
+    <!-- 2. BREADCRUMBS (Home Hover) -->
     <section class="breadcrumb-bar" id="breadcrumbBar">
         <nav class="breadcrumbs">
             <a href="index.html"><i data-lucide="home"></i> Home</a>
@@ -50,123 +50,142 @@
         </nav>
     </section>
 
-    <!-- 3. SERVICES HUB LAYOUT -->
+    <!-- 3. SERVICE HUB HERO (Brief) -->
+    <div class="market-hero" style="background: linear-gradient(135deg, var(--navy) 0%, #1e293b 100%);">
+        <div class="container">
+            <div class="hero-flex">
+                <div>
+                    <h2>Service Hub</h2>
+                    <p>Find specialized skills within Blok E & F buildings.</p>
+                </div>
+                <div class="live-stats-mini">
+                    <div class="s-stat"><span class="dot online"></span>8 Online Now</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <main class="container main-layout">
         
-        <!-- SIDEBAR: Service Navigation & Status -->
+        <!-- SIDEBAR: Advanced Filters -->
         <aside class="sidebar">
-            <div class="filter-group">
-                <h4>Search Services</h4>
-                <div class="search-input" style="width: 100%; margin-bottom: 20px;">
-                    <input type="text" placeholder="Filter by skill..." style="width: 100%;">
+            <div class="filter-card">
+                <div class="filter-group">
+                    <h4>Quick Search</h4>
+                    <div class="search-input-inner">
+                        <i data-lucide="search"></i>
+                        <input type="text" placeholder="Filter by skill...">
+                    </div>
                 </div>
-            </div>
 
-            <div class="filter-group">
-                <h4>Availability</h4>
-                <div class="status-filters">
-                    <label class="check-item">
-                        <input type="checkbox" checked> <span class="dot active"></span> <span>Active (Online)</span>
-                    </label>
-                    <label class="check-item">
-                        <input type="checkbox" checked> <span class="dot incoming"></span> <span>Incoming (Later)</span>
-                    </label>
-                    <label class="check-item">
-                        <input type="checkbox"> <span class="dot offline"></span> <span>Offline</span>
-                    </label>
-                    <label class="check-item">
-                        <input type="checkbox" checked> <span class="dot demanded"></span> <span>Demanded (Wanted)</span>
-                    </label>
+                <div class="filter-group">
+                    <h4>Availability</h4>
+                    <div class="status-filters">
+                        <label class="check-item-modern">
+                            <input type="checkbox" checked> <span class="custom-check"></span>
+                            <span class="dot online"></span> <span>Active Now</span>
+                        </label>
+                        <label class="check-item-modern">
+                            <input type="checkbox" checked> <span class="custom-check"></span>
+                            <span class="dot incoming"></span> <span>Incoming</span>
+                        </label>
+                        <label class="check-item-modern">
+                            <input type="checkbox"> <span class="custom-check"></span>
+                            <span class="dot offline"></span> <span>Offline</span>
+                        </label>
+                    </div>
                 </div>
-            </div>
 
-            <div class="filter-group">
-                <h4>Categories</h4>
-                <div class="cat-list">
-                    <button class="cat-item active">All Services</button>
-                    <button class="cat-item">Academic & Printing</button>
-                    <button class="cat-item">Tech & Repair</button>
-                    <button class="cat-item">Laundry & Cleaning</button>
-                    <button class="cat-item">Food & Delivery</button>
+                <div class="filter-group">
+                    <h4>Categories</h4>
+                    <div class="cat-list-market">
+                        <button class="cat-pill active">All Services</button>
+                        <button class="cat-pill">Academic & Printing</button>
+                        <button class="cat-pill">Tech & Repair</button>
+                        <button class="cat-pill">Laundry & Cleaning</button>
+                        <button class="cat-pill">Food & Delivery</button>
+                    </div>
                 </div>
-            </div>
 
-            <div class="sidebar-promo">
-                <h4>Missing something?</h4>
-                <p>Post a <b>Service Demand</b> if you need a skill no one is offering yet.</p>
-                <button class="btn btn-dark btn-sm w-100" style="margin-top: 10px;">Request Service</button>
+                <div class="sidebar-help">
+                    <p>Looking for something specific? Post a <b>Service Demand</b>.</p>
+                    <button class="btn btn-primary btn-sm w-100" style="margin-top:10px;">Request Service</button>
+                </div>
             </div>
         </aside>
 
-        <!-- MAIN CONTENT AREA -->
+        <!-- MAIN SERVICE CARDS -->
         <section class="content-area">
-            <div class="content-header">
-                <div class="results-info">
-                    <h3>Service Hub</h3>
-                    <p>Connecting Blok E & F talent</p>
-                </div>
-            </div>
-
-            <div class="services-vertical-grid">
+            <div class="services-list">
                 
-                <!-- ACTIVE SERVICE -->
-                <div class="s-card status-active">
-                    <div class="s-main">
-                        <div class="s-icon"><i data-lucide="printer"></i></div>
-                        <div class="s-info">
-                            <div class="s-badge active">Online Now</div>
+                <!-- SERVICE CARD: ACTIVE -->
+                <div class="service-row-card status-online">
+                    <div class="s-card-main">
+                        <div class="s-visual">
+                            <div class="s-icon-box"><i data-lucide="printer"></i></div>
+                        </div>
+                        <div class="s-content">
+                            <div class="s-badge-row">
+                                <span class="status-badge online">Active Now</span>
+                                <span class="s-tag">Printing</span>
+                            </div>
                             <h4>Ariff's High-Speed Printing</h4>
-                            <p>B&W: RM0.10 | Color: RM0.50 • Room E302</p>
+                            <p class="s-desc">Thesis, assignments, and posters. High quality laser print.</p>
+                            <div class="s-meta">
+                                <span><i data-lucide="map-pin"></i> E-302</span>
+                                <span><i data-lucide="banknote"></i> RM 0.10/page</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="s-actions">
-                        <button class="btn btn-primary"><i data-lucide="message-circle"></i> WhatsApp</button>
+                    <div class="s-card-actions">
+                        <button class="btn btn-whatsapp"><i data-lucide="message-circle"></i> WhatsApp</button>
                     </div>
                 </div>
 
-                <!-- INCOMING SERVICE -->
-                <div class="s-card status-incoming">
-                    <div class="s-main">
-                        <div class="s-icon"><i data-lucide="scissors"></i></div>
-                        <div class="s-info">
-                            <div class="s-badge incoming">Opening at 9:00 PM</div>
-                            <h4>Barber-On-Demand (Blok F)</h4>
-                            <p>Basic Trim: RM10.00 • Room F210</p>
+                <!-- SERVICE CARD: DEMANDED (Wanted) -->
+                <div class="service-row-card demanded-highlight">
+                    <div class="s-card-main">
+                        <div class="s-visual">
+                            <div class="s-icon-box demanded-icon"><i data-lucide="help-circle"></i></div>
+                        </div>
+                        <div class="s-content">
+                            <div class="s-badge-row">
+                                <span class="status-badge demanded">Demanded / Wanted</span>
+                            </div>
+                            <h4>Bike Repair Needed</h4>
+                            <p class="s-desc">Looking for someone to fix a derailleur/chain issue today.</p>
+                            <div class="s-meta">
+                                <span>Posted by: <b>Ziq (F104)</b></span>
+                                <span class="price-tag">Bounty: RM 20</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="s-actions">
-                        <button class="btn btn-outline"><i data-lucide="bell"></i> Notify Me</button>
-                    </div>
-                </div>
-
-                <!-- DEMANDED SERVICE (Wanted) -->
-                <div class="s-card status-demanded">
-                    <div class="s-main">
-                        <div class="s-icon request"><i data-lucide="help-circle"></i></div>
-                        <div class="s-info">
-                            <div class="s-badge demanded">Demand / Wanted</div>
-                            <h4>Looking for Bike Repair</h4>
-                            <p>Need someone to fix a broken chain. Willing to pay RM20.00</p>
-                        </div>
-                    </div>
-                    <div class="s-actions">
-                        <div class="posted-by">Posted by: <b>Ziq (E104)</b></div>
+                    <div class="s-card-actions">
                         <button class="btn btn-dark">I can do this!</button>
                     </div>
                 </div>
 
-                <!-- OFFLINE SERVICE -->
-                <div class="s-card status-offline">
-                    <div class="s-main">
-                        <div class="s-icon"><i data-lucide="wrench"></i></div>
-                        <div class="s-info">
-                            <div class="s-badge offline">Offline (Home for Weekend)</div>
-                            <h4>PC Format & Software Install</h4>
-                            <p>Windows/Office/Adobe • Room E204</p>
+                <!-- SERVICE CARD: INCOMING -->
+                <div class="service-row-card status-later">
+                    <div class="s-card-main">
+                        <div class="s-visual">
+                            <div class="s-icon-box"><i data-lucide="scissors"></i></div>
+                        </div>
+                        <div class="s-content">
+                            <div class="s-badge-row">
+                                <span class="status-badge incoming">Starts 9:00 PM</span>
+                                <span class="s-tag">Grooming</span>
+                            </div>
+                            <h4>Dorm Barber Blok F</h4>
+                            <p class="s-desc">Standard fade and trim. Appointment required.</p>
+                            <div class="s-meta">
+                                <span><i data-lucide="map-pin"></i> F-210</span>
+                                <span><i data-lucide="clock"></i> Tonight only</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="s-actions">
-                        <button class="btn btn-disabled" disabled>Unavailable</button>
+                    <div class="s-card-actions">
+                        <button class="btn btn-outline"><i data-lucide="bell"></i> Notify Me</button>
                     </div>
                 </div>
 
@@ -178,20 +197,20 @@
     <footer class="monolith-footer">
         <div class="container footer-grid">
             <div class="footer-col">
-                <h2 style="color: white; margin-bottom: 10px;">E & F Hub</h2>
-                <p style="opacity: 0.7;">Empowering dormitory talent.</p>
+                <h2>E & F Hub</h2>
+                <p>Empowering the boys of Blok E & F through community talent.</p>
             </div>
             <div class="footer-col">
-                <h4>Guidelines</h4>
-                <a href="#">Service Terms</a>
-                <a href="#">Payment Safety</a>
+                <h4>Support</h4>
+                <a href="#">Safety Rules</a>
+                <a href="#">Report Service</a>
             </div>
         </div>
     </footer>
 
     <script>
         lucide.createIcons();
-        // Breadcrumb logic
+        // --- BREADCRUMB LOGIC ---
         const homeTrigger = document.getElementById('homeTrigger');
         const breadcrumbBar = document.getElementById('breadcrumbBar');
         let hideTimeout;
@@ -200,13 +219,11 @@
             clearTimeout(hideTimeout);
             breadcrumbBar.classList.add('is-active');
         });
-
         homeTrigger.addEventListener('mouseleave', () => {
             hideTimeout = setTimeout(() => {
                 if (!breadcrumbBar.matches(':hover')) breadcrumbBar.classList.remove('is-active');
             }, 200);
         });
-
         breadcrumbBar.addEventListener('mouseenter', () => clearTimeout(hideTimeout));
         breadcrumbBar.addEventListener('mouseleave', () => breadcrumbBar.classList.remove('is-active'));
     </script>
