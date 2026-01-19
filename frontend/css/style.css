@@ -814,3 +814,190 @@ input:focus, textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 4p
     width: 90px; /* Reduced from 110px */
     height: 90px;
 }
+/* ==========================================================================
+   1. CORE VARIABLES & GLOBAL RESET
+   ========================================================================== */
+:root {
+    --primary: #4f46e5;
+    --primary-light: #eef2ff;
+    --secondary: #10b981;
+    --navy: #0f172a;
+    --white: #ffffff;
+    --bg: #f8fafc;
+    --slate-100: #f1f5f9;
+    --slate-200: #e2e8f0;
+    --slate-400: #94a3b8;
+    --slate-600: #475569;
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.1);
+    --shadow-indigo: 0 4px 14px 0 rgba(79, 70, 229, 0.3);
+    --radius-lg: 24px;
+    --radius-md: 12px;
+    --font-main: 'Plus Jakarta Sans', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg);
+    color: var(--navy);
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevents side-scrolling on mobile */
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+    width: 100%;
+}
+
+/* ==========================================================================
+   2. NAVIGATION (Responsive Navigation)
+   ========================================================================== */
+.glass-nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--slate-200);
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.nav-wrapper { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    width: 100%; 
+}
+
+.brand { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+.bento-logo { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
+.sq { width: 8px; height: 8px; background: var(--primary); border-radius: 2px; }
+.brand-text h1 { font-size: 1.3rem; font-weight: 800; line-height: 1; }
+.brand-text .tagline { font-size: 0.6rem; text-transform: uppercase; color: var(--primary); font-weight: 700; letter-spacing: 1px; }
+
+.nav-links { display: flex; gap: 25px; }
+.nav-item {
+    text-decoration: none;
+    color: var(--slate-600);
+    font-weight: 600;
+    font-size: 0.9rem;
+    position: relative;
+    padding: 8px 0;
+}
+.nav-item.active { color: var(--primary); border-bottom: 3px solid var(--primary); }
+
+.search-input { 
+    display: flex; align-items: center; background: var(--slate-100); 
+    padding: 8px 16px; border-radius: 10px; border: 1px solid var(--slate-200);
+}
+.search-input input { border: none; background: transparent; outline: none; margin-left: 8px; width: 150px; font-family: inherit; }
+
+/* ==========================================================================
+   3. HERO HUB (Visual Impact)
+   ========================================================================== */
+.hero-hub { background: radial-gradient(circle at top right, #eef2ff, var(--bg)); padding: 80px 0; position: relative; }
+.hero-grid { display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+.hero-text { flex: 1; max-width: 650px; }
+.hero-title { font-size: 3rem; font-weight: 800; line-height: 1.1; margin: 15px 0; letter-spacing: -1px; }
+.hero-title span { color: var(--primary); }
+.badge { background: var(--white); padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; border: 1px solid var(--slate-200); }
+
+.hero-btns { display: flex; flex-direction: row; gap: 15px; margin-top: 30px; }
+.btn { padding: 12px 28px; border-radius: 12px; font-weight: 700; cursor: pointer; border: none; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px; }
+.btn-primary { background: var(--primary); color: white; box-shadow: var(--shadow-indigo); }
+.btn-dark { background: var(--navy); color: white; }
+
+.stat-card { background: var(--white); padding: 20px; border-radius: 16px; border: 1px solid var(--slate-200); text-align: center; min-width: 130px; box-shadow: var(--shadow-sm); }
+.stat-card h3 { font-size: 1.5rem; color: var(--primary); font-weight: 800; }
+
+/* ==========================================================================
+   4. MAIN LAYOUT & BENTO GRID
+   ========================================================================== */
+.main-layout { display: flex; gap: 40px; padding: 40px 0 80px; }
+.sidebar { width: 280px; flex-shrink: 0; }
+.content-area { flex: 1; overflow: hidden; }
+
+/* Marketplace Grid */
+.bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.bento-card { background: var(--white); border-radius: 20px; border: 1px solid var(--slate-200); overflow: hidden; transition: 0.3s; }
+.featured { grid-column: span 2; }
+
+/* Services Slider */
+.services-scroll-container { display: flex; gap: 15px; overflow-x: auto; padding-bottom: 20px; scrollbar-width: none; cursor: grab; }
+.services-scroll-container::-webkit-scrollbar { display: none; }
+.service-mini-card { flex: 0 0 280px; background: white; border: 1px solid var(--slate-200); border-radius: 20px; padding: 20px; }
+
+/* ==========================================================================
+   5. MOBILE & TABLET OVERHAUL (The "Mess" Fixer)
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+    .hero-title { font-size: 2.5rem; }
+    .sidebar { width: 240px; }
+    .bento-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    /* Header Fix */
+    .nav-wrapper { flex-direction: column; gap: 15px; padding: 15px 0; }
+    .nav-links { width: 100%; justify-content: center; gap: 15px; border-top: 1px solid var(--slate-100); padding-top: 10px; }
+    .search-input { width: 100%; order: 3; }
+    .search-input input { width: 100%; }
+
+    /* Hero Fix */
+    .hero-hub { padding: 40px 0; text-align: center; }
+    .hero-grid { flex-direction: column; gap: 30px; }
+    .hero-title { font-size: 2.2rem; }
+    .hero-btns { flex-direction: column; width: 100%; }
+    .btn { width: 100%; justify-content: center; }
+    .hero-stats { justify-content: center; width: 100%; }
+
+    /* Main Layout Fix: Stack Sidebar */
+    .main-layout { flex-direction: column; }
+    .sidebar { width: 100%; }
+    
+    /* Bento Grid -> 1 Column */
+    .bento-grid { grid-template-columns: 1fr; }
+    .featured { grid-column: span 1; }
+
+    /* Services Slider: Show item edge to imply scrolling */
+    .service-mini-card { flex: 0 0 85%; }
+
+    /* Breadcrumbs centered for thumbs */
+    .breadcrumb-bar { 
+        width: 95%; 
+        padding: 10px; 
+    }
+    .breadcrumbs { font-size: 0.75rem; justify-content: center; }
+
+    /* Footer Fix */
+    .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 30px; }
+}
+
+@media (max-width: 480px) {
+    .hero-title { font-size: 1.8rem; }
+    .stat-card { min-width: 110px; padding: 15px 10px; }
+    .brand-text h1 { font-size: 1.1rem; }
+}
+
+/* ==========================================================================
+   6. REMAINING CORE STYLES (Footer, Utils, etc.)
+   ========================================================================== */
+.monolith-footer { background: var(--navy); color: var(--white); padding: 60px 0 30px; margin-top: 60px; }
+.footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.footer-col a { color: var(--white); text-decoration: none; opacity: 0.7; display: block; margin-bottom: 10px; font-size: 0.9rem; }
+.footer-col a:hover { opacity: 1; color: var(--primary-light); }
+
+.skeleton { background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%); background-size: 200% 100%; animation: loading 1.5s infinite; }
+@keyframes loading { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+.custom-scroll-track { width: 150px; height: 4px; background: var(--slate-200); margin: 10px auto 30px auto; border-radius: 10px; position: relative; overflow: hidden; }
+.custom-scroll-thumb { position: absolute; top: 0; left: 0; height: 100%; width: 50px; background: var(--primary); border-radius: 10px; transition: transform 0.1s ease-out; }
